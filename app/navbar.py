@@ -4,10 +4,12 @@ import dash_bootstrap_components as dbc
 def navbar():
     return dbc.NavbarSimple(
         children=[
-            # dbc.NavItem(dbc.NavLink('Home-Employment Dynamics',
-            #                         id='commuter-map-link',
-            #                         href='',
-            #                         )),
+            dbc.NavItem(dbc.NavLink('Trail Activity Lexicon',
+                                    id='trail-lexicon',
+                                    href='assets/traillexicon.html',
+                                    external_link=True,
+                                    style={'margin-top': '8px'}
+                                    )),
             # dbc.NavItem(dbc.NavLink('3D Built Environment',
             #                         id='building-map-link',
             #                         href='/3d-built-environment',
