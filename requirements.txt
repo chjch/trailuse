@@ -23,6 +23,7 @@ six==1.16.0
 tenacity==8.1.0
 traitlets==5.4.0
 Werkzeug==2.2.2
+holoviews==1.15.3
 
 # Local package in ./src
 ./src/dash_deck-0.0.2.tar.gz
