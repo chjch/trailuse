@@ -1,6 +1,6 @@
 :root {
     --main-color: #EEEFEC;
-    --container-color: #FAF9F8;
+    --container-color: #ffffff;
     --shadow-color: lightgrey;
 }
 
@@ -13,9 +13,21 @@
     box-shadow: 2px 2px 2px var(--shadow-color);
 }
 
+.intro_text {
+    margin: 25px 10px 10px;
+    padding: 25px;
+}
+
 body {
     background-color: var(--main-color);
-    /*overflow: hidden; !* Hide scrollbars *!*/
+    overflow: scroll;
+    overflow-x: hidden; /* Hide horizontal scrollbars */
+    font-size: 2em;
+}
+
+::-webkit-scrollbar {
+    width: 0;
+    background: transparent; /* make scrollbar transparent */
 }
 
 /*.navbar .navbar-brand{*/
@@ -29,30 +41,47 @@ body {
     position: relative;
 }
 
-.map_window a.external-link{
+.chord_button {
     position: absolute;
-    top: 2em;
-    right: 2em;
-    background-color: #ffa700;
-    border-radius: 1.5em;
-    color: #3d2900;
+    background-color: #B0D8D8;
+    border-radius: 0.5em;
+    border-color: #E6ECF5;
+    /*color: #3d2900;*/
     /*text-transform:uppercase;*/
     text-decoration: none;
-    padding: 1em 1.5em;
+    /*padding: 0em 2em 3em 1em;*/
+    /*box-shadow: 2px 2px 2px #D6EDEA;*/
 }
 
-a.external-link:hover {
-    background-color: #ffff60;
+.age_btn {
+    top: 3em;
+    right: 15em;
+}
+
+.edu_btn {
+    top: 3em;
+    right: 2em;
+}
+
+.chord_button:hover {
+    background-color: #2b78da;
     cursor: pointer;
-    color: black;
+    color: white;
+}
+
+.chord_button:focus {
+    background-color: #2b78da;
+    cursor: pointer;
+    color: white;
 }
 
 .dropdown {
     margin-top: 20px;
+    font-size: 11pt;
 }
 
 .dropdown .Select-control {
-    background-color: rgb(34, 34, 34) !important;
+    background-color: var(--main-color) !important;
 }
 
 .dropdown .Select-value {
@@ -60,11 +89,11 @@ a.external-link:hover {
 }
 
 .dropdown .Select-menu-outer {
-    background-color: rgb(34, 34, 34);
+    background-color: var(--main-color);
 }
 
 .dropdown .Select-value-label {
-    color: #fff !important;
+    color: black !important;
 }
 
 .dropdown .VirtualizedSelectFocusedOption {
@@ -73,7 +102,7 @@ a.external-link:hover {
 }
 
 .dropdown .Select-control, .Select div, .is-open>.Select-control {
-    color: white;
+    color: black;
     border-color: slategray;
 }
 

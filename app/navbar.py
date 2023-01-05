@@ -25,7 +25,7 @@ def navbar():
             #                         href='/lidar-point-cloud',
             #                         ))
         ],
-        brand='Trail Use Dashboard',
+        brand='Data Analysis of Trail Experiences and Usage',
         brand_href='/',
         brand_style={'font-size': '2em'},
         color="#",
