@@ -40,22 +40,28 @@ activity_df = activity_df[[rid_column, actv_column]]
 
 activity_state_df = activity_df.join(states_df.set_index(rid_column),
                                      on=rid_column).dropna()
+state_num_rids = activity_state_df['STATEABBREV'].value_counts().to_dict()
 
 
 def activity_choropleth(actv: str):
     mask = activity_state_df[actv_column] == actv.lower()
-    statecounts_df = activity_state_df[mask].groupby('STATEABBREV') \
-                                            .agg({rid_column: 'count',
-                                                  state_column: 'first'}) \
-                                            .reset_index()
-    fig = px.choropleth(statecounts_df,
+    state_pct_df = activity_state_df[mask].groupby('STATEABBREV') \
+                                          .agg({rid_column: 'count',
+                                                state_column: 'first'}) \
+                                          .reset_index()
+    state_pct_df['ResponseId'] = (
+        state_pct_df['ResponseId'] / state_pct_df['STATEABBREV'].apply(
+            lambda x: state_num_rids.get(x)
+        )
+    )
+    fig = px.choropleth(state_pct_df,
                         locations='STATEABBREV',
                         locationmode="USA-states",
                         color=rid_column,
                         color_continuous_scale="Darkmint",
                         hover_name='Q24',
-                        hover_data={'STATEABBREV': False, rid_column: True},
-                        labels={rid_column: 'Number'},
+                        hover_data={'STATEABBREV': False, rid_column: ':.2f'},
+                        labels={rid_column: 'Percent'},
                         scope="usa")
     fig.update_layout(dragmode=False, margin=dict(l=0, r=0, b=0, t=30))
     fig.update_geos(showlakes=False)
